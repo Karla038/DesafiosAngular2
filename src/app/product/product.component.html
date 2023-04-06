@@ -1,0 +1,37 @@
+<h3>
+  <a [title]="product.name + ' details'">
+    {{ product.name }}
+  </a>
+</h3>
+
+<p-toast
+  position="top-center"
+  style="position: absolute;top: 40px;
+left: 40px;"
+>
+</p-toast>
+<p-dialog header="{{ product.name }}" [(visible)]="display">
+  Precio: {{ product.price }}
+  <img
+    src="./assets/phones/{{ product.images }}"
+    width="100px"
+    height="100px"
+    alt="Sin
+  imagen"
+  />
+  <button type="button" (click)="addToCart(product)">Buy</button>
+</p-dialog>
+
+<button
+  type="button"
+  (click)="showDialog()"
+  icon="pi pi-info-circle"
+  label="Mostrar"
+></button>
+
+<p *ngIf="product.description">Description: {{ product.description }}</p>
+
+<button type="button" (click)="share()">Share</button>
+
+<app-product-alerts [product]="product" (notify)="onNotify()">
+</app-product-alerts>
